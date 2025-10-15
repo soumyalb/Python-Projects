@@ -18,3 +18,23 @@ def largefile_renamer(dir_path,pattern):
             os.rename(src,dst)
 
 largefile_renamer("largefiles_folder",".txt")
+
+# Improved version:---------------------------------------
+
+import os
+
+def largefile_renamer(dir_path, extension):
+    files = os.listdir(dir_path)
+    
+    for count, filename in enumerate(files):
+        if filename.endswith(extension):
+            src = os.path.join(dir_path, filename)
+            dst = os.path.join(dir_path, f"my_file_{count}{extension}")
+            
+            if not os.path.exists(dst):  # Avoid overwriting
+                os.rename(src, dst)
+            else:
+                print(f"Skipping {dst}, file already exists.")
+
+# Example usage
+largefile_renamer("largefiles_folder", ".txt")
