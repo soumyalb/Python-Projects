@@ -24,9 +24,9 @@ def binary_search(sorted_list, target):
             return f"Value {sorted_list[mid]} Found at index {mid}"
         
         if sorted_list[mid] < target:
-            low = low + 1
+            low = mid + 1
         else:
-            high = high - 1
+            high = mid - 1
             
     return "Not Found"
 
